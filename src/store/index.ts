@@ -66,7 +66,56 @@ export default new Vuex.Store({
     },
   },
   mutations: {},
-  actions: {},
+  actions: {
+    hire: () => {
+      return;
+    },
+    attack: () => {
+      return;
+    },
+    bribe: () => {
+      return;
+    },
+    chaos: () => {
+      return;
+    },
+    control: () => {
+      return;
+    },
+    equip: () => {
+      return;
+    },
+    give: () => {
+      return;
+    },
+    heal: () => {
+      return;
+    },
+    hide: () => {
+      return;
+    },
+    influence: () => {
+      return;
+    },
+    move: () => {
+      return;
+    },
+    research: () => {
+      return;
+    },
+    sell: () => {
+      return;
+    },
+    snitch: () => {
+      return;
+    },
+    idle: () => {
+      return;
+    },
+    terminate: () => {
+      return;
+    },
+  },
   modules: {
     // sub state goes here
   },
