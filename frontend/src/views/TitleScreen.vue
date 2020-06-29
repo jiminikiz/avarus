@@ -1,26 +1,26 @@
 <template>
   <div class="home">
     <button @click="buttonClicked">BUTTON</button>
-    <Menu :links="menuOptions" />
+    <NavigationMenu :links="menuOptions" />
   </div>
 </template>
 
 <script lang="ts">
 // @ is an alias to /src
-import Menu from '@/components/Menu.vue';
+import NavigationMenu from '@/components/NavigationMenu.vue';
 
 export default {
   name: 'TitleScreen',
   components: {
-    Menu,
+    NavigationMenu,
   },
   sockets: {
     connect() {
       console.log('socket:connected');
     },
-    custom(value) {
-      console.log('emit:', value);
-    }
+    // custom(value) {
+    //   console.log('emit:', value);
+    // }
   },
   data: () => {
     return {

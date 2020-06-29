@@ -19,6 +19,12 @@ const routes: RouteConfig[] = [
     component: () =>
       import(/* webpackChunkName: "settings" */ '../views/Settings.vue'),
   },
+  {
+    path: '/new-game',
+    name: 'New Game',
+    component: () =>
+      import(/* webpackChunkName: "new-game" */ '../views/NewGame.vue'),
+  },
 ];
 
 const router = new VueRouter({

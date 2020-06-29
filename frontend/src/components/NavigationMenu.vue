@@ -17,7 +17,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class Menu extends Vue {
+export default class NavigationMenu extends Vue {
   @Prop() private links!: [];
 }
 </script>
