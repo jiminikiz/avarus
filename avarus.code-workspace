@@ -6,7 +6,9 @@
   ],
   "settings": {
     "cSpell.words": [
-      "nestjs"
+      "nestjs",
+      "unequip",
+      "unhide"
     ]
   }
 }
