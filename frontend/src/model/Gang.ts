@@ -1,5 +1,11 @@
 import { Attributes } from '@/model/Attributes';
-import { Item, ItemType, Weapon, Armor, Gear } from '@/model/Item';
+import {
+  EquipmentType,
+  Weapon,
+  Armor,
+  Gear,
+  Equipable,
+} from '@/model/Equipment';
 
 export enum GangStatus {
   isBribing,
@@ -27,18 +33,13 @@ export class Gang {
   public status: GangStatus;
   public attributes: Attributes;
 
+  public equipment: Map<EquipmentType, Equipable> = new Map();
+
   public weapon?: Weapon;
   public armor?: Armor;
   public gear?: Gear;
 
   private maxForce = 10;
-
-  public get statistics(): Attributes {
-    return this.applyBuffs({
-      ...this.attributes,
-      force: this.force,
-    });
-  }
 
   public constructor(shape: GangShape) {
     const { attributes } = shape;
@@ -48,9 +49,27 @@ export class Gang {
     this.attributes = attributes;
   }
 
-  public terminate(): Gang {
-    this.status = GangStatus.isTerminated;
-    return this;
+  public get statistics(): Attributes {
+    return this.applyEquipmentBuffs({
+      ...this.attributes,
+      force: this.force,
+    });
+  }
+
+  public applyEquipmentBuffs(
+    statistics: Attributes,
+  ): Attributes {
+    this.equipment.forEach((
+      equipable: Equipable,
+      type: EquipmentType,
+    ) => {
+      statistics = {
+        ...statistics,
+        ...equipable,
+      };
+    });
+
+    return statistics;
   }
 
   public takeDamage(damage: number): Gang {
@@ -98,77 +117,21 @@ export class Gang {
     return this;
   }
 
-  public give(type: ItemType, toGang: Gang): Gang {
+  public give(type: EquipmentType, toGang: Gang): Gang {
     this.status = GangStatus.isGiving;
-
-    switch (type) {
-      case ItemType.Weapon:
-        toGang.equip(this.unequip(ItemType.Weapon));
-        return this;
-      case ItemType.Armor:
-        toGang.equip(this.unequip(ItemType.Armor));
-        return this;
-      case ItemType.Gear:
-        toGang.equip(this.unequip(ItemType.Armor));
-        return this;
-    }
+    toGang.equip(this.unequip(type));
+    return this;
   }
 
-  public equip(item: Item): Gang {
+  public equip(equipment: Equipable): Gang {
     this.status = GangStatus.isEquipping;
-
-    switch (item.type) {
-      case ItemType.Weapon:
-        this.weapon = item as Weapon;
-        return this;
-      case ItemType.Armor:
-        this.armor = item as Armor;
-        return this;
-      case ItemType.Gear:
-        this.gear = item as Gear;
-        return this;
-    }
+    this.equipment.set(equipment.type, equipment);
+    return this;
   }
 
-  private unequip(type: ItemType): Item {
-    switch (type) {
-      case ItemType.Weapon:
-        const weapon = this.weapon;
-        this.weapon = undefined;
-        return weapon as Item;
-      case ItemType.Armor:
-        const armor = this.armor;
-        this.armor = undefined;
-        return armor as Item;
-      case ItemType.Gear:
-        const gear = this.gear;
-        this.gear = undefined;
-        return gear as Item;
-    }
-  }
-
-  private applyBuffs(statistics: Attributes): Attributes {
-    if (this.weapon) {
-      statistics = {
-        ...statistics,
-        ...this.weapon,
-      };
-    }
-
-    if (this.armor) {
-      statistics = {
-        ...statistics,
-        ...this.armor,
-      };
-    }
-
-    if (this.gear) {
-      statistics = {
-        ...statistics,
-        ...this.gear,
-      };
-    }
-
-    return statistics;
+  public unequip(type: EquipmentType): Equipable {
+    const equipment = this.equipment.get(type) as Equipable;
+    this.equipment.delete(type);
+    return equipment;
   }
 }
