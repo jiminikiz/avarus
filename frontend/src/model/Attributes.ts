@@ -1,31 +1,39 @@
 export interface Attributes {
-  force: number;
-  upkeep: number;
-  tech: number;
+  blade: number;
+  chaos: number;
   combat: number;
   defense: number;
-  stealth: number;
   detect: number;
-  strength: number;
-  blade: number;
-  range: number;
   fighting: number;
+  force: number;
+  heal: number;
+  influence: number;
   martialArts: number;
+  range: number;
+  research: number;
+  stealth: number;
+  strength: number;
+  tech: number;
+  upkeep: number;
 }
 
 const attributes: Attributes = {
-  force: 0,
-  upkeep: 0,
-  tech: 0,
+  blade: 0,
+  chaos: 0,
   combat: 0,
   defense: 0,
-  stealth: 0,
   detect: 0,
-  strength: 0,
-  blade: 0,
-  range: 0,
   fighting: 0,
+  force: 0,
+  heal: 0,
+  influence: 0,
   martialArts: 0,
+  range: 0,
+  research: 0,
+  stealth: 0,
+  strength: 0,
+  tech: 0,
+  upkeep: 0,
 };
 
 export default attributes;
