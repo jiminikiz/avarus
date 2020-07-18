@@ -6,11 +6,14 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-
-const socket = io(process.env.VUE_APP_SOCKET_ADDRESS);
+import debug from './debug';
 
 Vue.config.productionTip = false;
-Vue.use(VueSocketIOExt, socket);
+
+debug();
+
+// const socket = io(process.env.VUE_APP_SOCKET_ADDRESS);
+// Vue.use(VueSocketIOExt, socket);
 
 new Vue({
   router,
