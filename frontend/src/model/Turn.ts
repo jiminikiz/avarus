@@ -1,4 +1,4 @@
-import { GameEvent } from '@/model/GameEvent';
+import { GameEvent } from '@/lib/GameEvent';
 import { Command } from './Commands';
 
 export enum TurnPhase {

@@ -13,13 +13,13 @@ export enum Color {
 }
 
 export enum Trait {
-  Greed,
-  Gluttony,
-  Sloth,
-  Lust,
-  Wrath,
-  Envy,
-  Pride,
+  Greed = 'Greed',
+  Gluttony = 'Gluttony',
+  Sloth = 'Sloth',
+  Lust = 'Lust',
+  Wrath = 'Wrath',
+  Envy = 'Envy',
+  Pride = 'Pride',
 }
 
 export interface Kingpin {
@@ -33,7 +33,7 @@ export interface PlayerShape {
   gangs?: Gang[];
 }
 
-class Player implements PlayerShape {
+export class Player implements PlayerShape {
   public color: Color;
   public kingpin: Kingpin;
   public gangs: Gang[];
@@ -47,7 +47,3 @@ class Player implements PlayerShape {
     this.gangs = [new Gang(kingpin.henchmen)];
   }
 }
-
-export default {
-  Player,
-};

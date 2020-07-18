@@ -2,6 +2,7 @@ export interface Attributes {
   blade: number;
   chaos: number;
   combat: number;
+  control: number;
   defense: number;
   detect: number;
   fighting: number;
@@ -21,6 +22,7 @@ const attributes: Attributes = {
   blade: 0,
   chaos: 0,
   combat: 0,
+  control: 0,
   defense: 0,
   detect: 0,
   fighting: 0,
