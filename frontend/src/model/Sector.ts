@@ -11,17 +11,17 @@ export enum SectorCode {
 }
 
 export interface SectorClass {
+  label: string;
   income: number;
   tolerance: number;
-  label: string;
 }
 
 export const SectorClasses: Map<SectorCode, SectorClass> = new Map([
-  [SectorCode.LO, { income: 3, tolerance: 14, label: 'Lower' }],
-  [SectorCode.LM, { income: 4, tolerance: 13, label: 'Lower Middle' }],
-  [SectorCode.MI, { income: 5, tolerance: 12, label: 'Middle' }],
-  [SectorCode.UM, { income: 6, tolerance: 11, label: 'Upper Middle' }],
-  [SectorCode.UP, { income: 7, tolerance: 10, label: 'Upper' }],
+  [SectorCode.LO, { code: SectorCode.LO, income: 3, tolerance: 14, label: 'Lower' }],
+  [SectorCode.LM, { code: SectorCode.LM, income: 4, tolerance: 13, label: 'Lower Middle' }],
+  [SectorCode.MI, { code: SectorCode.MI, income: 5, tolerance: 12, label: 'Middle' }],
+  [SectorCode.UM, { code: SectorCode.UM, income: 6, tolerance: 11, label: 'Upper Middle' }],
+  [SectorCode.UP, { code: SectorCode.UP, income: 7, tolerance: 10, label: 'Upper' }],
 ]);
 
 export interface Site {
@@ -33,38 +33,28 @@ export interface Site {
 }
 
 export interface SectorShape extends BoardTile {
-  HQ?: Site;
-  sites: Site[];
-  gangs: Gang[];
+  sites?: Site[];
+  gangs?: Gang[];
 }
 
 export class Sector implements SectorShape {
   public row: number;
   public col: number;
   public classification: SectorClass;
-  public sites: Site[] = [];
-  public maxSites: number = 3;
 
-  public HQ?: Site = undefined;
   public controlled?: boolean = false;
+  public maxSites: number = 3;
+  public sites: Site[] = [];
   public gangs: Gang[] = [];
 
   public get tolerance(): number {
     return this.classification.tolerance;
   }
 
-  constructor(sector: SectorShape, henchmen: Gang) {
+  constructor(sector: SectorShape) {
     this.row = sector.row;
     this.col = sector.col;
     this.classification = this.classify();
-
-    // TODO: Set Sector Code
-
-    if (sector.HQ) {
-      this.controlled = true;
-      this.addSite(sector.HQ);
-      this.addGang(henchmen);
-    }
   }
 
   public addGang(gang: Gang): void {

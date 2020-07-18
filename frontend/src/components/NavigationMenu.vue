@@ -16,9 +16,16 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component
+interface NavigationLinkItem {
+  label: string;
+  path: string;
+}
+
+@Component({
+  name: 'nav-menu',
+})
 export default class NavigationMenu extends Vue {
-  @Prop() private links!: [];
+  @Prop() private links?: NavigationLinkItem[];
 }
 </script>
 

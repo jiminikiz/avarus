@@ -3,6 +3,7 @@ import { Board } from './lib/Board';
 import { Player, Color, Trait } from './model/Player';
 import { Gang } from './model/Gang';
 import attributes from './model/Attributes';
+import { Sector } from './model/Sector';
 
 export interface Debugery {
   prefix?: string;
@@ -39,6 +40,14 @@ export default () => {
           attributes,
         }),
       },
+    }),
+  });
+
+  debug({
+    label: 'A new Sector',
+    dump: new Sector({
+      row: 0,
+      col: 0,
     }),
   });
 };

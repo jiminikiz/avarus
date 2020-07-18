@@ -8,7 +8,6 @@
 <script lang="ts">
 // @ is an alias to /src
 import NavigationMenu from '@/components/NavigationMenu.vue';
-import Modes from '@/model/mode';
 
 export default {
   name: 'NewGame',
@@ -28,6 +27,8 @@ export default {
 
     };
   },
-  methods: {}
+  methods: {
+
+  },
 };
 </script>

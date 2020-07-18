@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <button @click="buttonClicked">BUTTON</button>
     <NavigationMenu :links="menuOptions" />
   </div>
 </template>
@@ -13,14 +12,6 @@ export default {
   name: 'TitleScreen',
   components: {
     NavigationMenu,
-  },
-  sockets: {
-    connect() {
-      console.log('socket:connected');
-    },
-    // custom(value) {
-    //   console.log('emit:', value);
-    // }
   },
   data: () => {
     return {
@@ -41,9 +32,7 @@ export default {
     };
   },
   methods: {
-    buttonClicked() {
-      this.$socket.client.emit('message', 'Button Clicked');
-    }
-  }
+
+  },
 };
 </script>
