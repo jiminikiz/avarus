@@ -1,7 +1,9 @@
+import Tools from './Tools';
+
 export interface Roll {
-  numberOfDie: number;
+  numberOfDice: number;
   numberOfSides: number;
-  isSuccess?: Function;
+  isSuccess?: (roll: number) => boolean;
 }
 
 export interface RollResult {
@@ -22,9 +24,9 @@ export class Dice {
    * @param sides
    */
   public static roll(
-    sides: number
+    sides: number,
   ): number {
-    return 1 + Math.floor(Math.random() * sides);
+    return Tools.randomPositiveInteger(sides);
   }
 
   /**
@@ -32,13 +34,13 @@ export class Dice {
    * @param roll: Roll
    */
   public static shaker({
-    numberOfDie,
+    numberOfDice,
     numberOfSides,
     isSuccess,
   }: Roll): RollResult {
     const rolls: number[] = [];
 
-    while (numberOfDie--) {
+    while (numberOfDice--) {
       rolls.push(Dice.roll(numberOfSides));
     }
 
@@ -57,7 +59,7 @@ export class Dice {
    */
   private static sum(
     sum: number,
-    roll: number
+    roll: number,
   ): number {
     return sum + roll;
   }
@@ -66,8 +68,10 @@ export class Dice {
    * GAME_RULE: default success
    * @param roll
    */
-  private static defaultIsSuccess: Function = (
-    roll: number
+  private static defaultIsSuccess: (
+    roll: number,
+  ) => boolean = (
+    roll: number,
   ): boolean => roll >= 5
 
   /**
@@ -77,7 +81,7 @@ export class Dice {
    */
   private static success(
     rolls: number[],
-    isSuccessful: Function = Dice.defaultIsSuccess
+    isSuccessful: (roll: number) => boolean = Dice.defaultIsSuccess,
   ): number {
     return rolls.reduce((count: number, roll: number) => {
       return isSuccessful(roll) ? ++count : count;
@@ -91,7 +95,7 @@ export class Dice {
    */
   private static counts(
     counts: Map<number, number>,
-    roll: number
+    roll: number,
   ): Map<number, number> {
     const count = counts.get(roll) || 0;
     counts.set(roll, count + 1);
