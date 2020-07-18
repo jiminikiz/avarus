@@ -8,18 +8,18 @@ import {
 } from '@/model/Equipment';
 
 export enum GangStatus {
-  isBribing,
-  isControlling,
-  isEquipping,
-  isGiving,
-  isHealing,
-  isHiding,
-  isIdle,
-  isInfluencing,
-  isMoving,
-  isRioting,
-  isResearching,
-  isTerminated,
+  isIdle = 'Idle',
+  isMoving = 'Moving',
+  isControlling = 'Controlling',
+  isInfluencing = 'Influencing',
+  isHealing = 'Healing',
+  isRioting = 'Rioting',
+  isBribing = 'Bribing',
+  isEquipping = 'Equipping',
+  isGiving = 'Giving',
+  isHiding = 'Hiding',
+  isResearching = 'Researching',
+  isTerminated = 'Terminated',
 }
 
 export interface GangShape {

@@ -1,35 +1,36 @@
 import { Dice, RollResults } from '@/lib/Dice';
-import { Gang } from './Gang';
-import { GameEvent, GameEventType } from './GameEvent';
-import { ResearchableEquipment } from './ResearchableEquipment';
-import { Equipable } from './Equipment';
+import { GameEvent, GameEventType } from '@/lib/GameEvent';
+
 import { Site, Sector } from './Sector';
+import { Gang } from './Gang';
+import { Equipable } from './Equipment';
+import { ResearchableEquipment } from './ResearchableEquipment';
 
 export enum Command {
-  Attack,
-  Bribe,
-  Chaos,
-  Control,
-  Equip,
-  Give,
-  Heal,
-  Hide,
-  Influence,
-  Move,
-  None,
-  Research,
-  Sell,
-  Snitch,
-  Terminate,
+  Attack = 'Attack',
+  Bribe = 'Bribe',
+  Chaos = 'Chaos',
+  Control = 'Control',
+  Equip = 'Equip',
+  Give = 'Give',
+  Heal = 'Heal',
+  Hide = 'Hide',
+  Influence = 'Influence',
+  Move = 'Move',
+  None = 'None',
+  Research = 'Research',
+  Sell = 'Sell',
+  Snitch = 'Snitch',
+  Terminate = 'Terminate',
 }
 
 export enum CommandPhase {
-  Instant,
-  Combat,
-  Transaction,
-  Chaos,
-  Movement,
-  Control,
+  Instant = 'Instant',
+  Combat = 'Combat',
+  Transaction = 'Transaction',
+  Chaos = 'Chaos',
+  Movement = 'Movement',
+  Control = 'Control',
 }
 
 export enum CommandDefault {
@@ -51,7 +52,7 @@ export default {
     ): RollResults => {
       const { force, chaos } = gang.statistics;
       const rollResult = Dice.shaker({
-        numberOfDie: (force + chaos),
+        numberOfDice: (force + chaos),
         numberOfSides: CommandDefault.diceSides,
       });
       accumulation.results.push(rollResult);
@@ -63,14 +64,26 @@ export default {
       success: 0,
     });
 
+    return {
+      type: GameEventType.Command,
+      text: `Players gangs cause ${result.success} riots at [${sector.row},${sector.col}].`,
+    };
+  },
+  [Command.Control]: (
+    gangs: Gang[],
+    sector: Sector,
+  ): GameEvent => {
+    const controllingForce = gangs.reduce(
+      (sum, { statistics: { force, control } })
+      : number => sum += (force + control), 0,
+    );
+
+    const numberOfDice = controllingForce;
 
     return {
       type: GameEventType.Command,
-      text: `Players gangs cause ${result.success} riots at ${sector.name}.`,
+      text: 'Control message goes here',
     };
-  },
-  [Command.Control]: () => {
-    return;
   },
   [Command.Equip]: () => {
     return;
@@ -85,7 +98,7 @@ export default {
     const { heal } = gang.statistics;
 
     const rollResult = Dice.shaker({
-      numberOfDie: CommandDefault.healFactor + heal,
+      numberOfDice: CommandDefault.healFactor + heal,
       numberOfSides: CommandDefault.diceSides,
     });
 
@@ -114,7 +127,7 @@ export default {
     ): RollResults => {
       const { force, influence } = gang.statistics;
       const rollResult = Dice.shaker({
-        numberOfDie: (force + influence),
+        numberOfDice: (force + influence),
         numberOfSides: CommandDefault.diceSides,
       });
 
@@ -145,7 +158,7 @@ export default {
     const { force, research } = gang.statistics;
 
     const rollResult = Dice.shaker({
-      numberOfDie: (force + research),
+      numberOfDice: (force + research),
       numberOfSides: CommandDefault.diceSides,
     });
 
