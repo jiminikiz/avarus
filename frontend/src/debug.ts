@@ -4,6 +4,7 @@ import { Player, Color, Trait } from './model/Player';
 import { Gang } from './model/Gang';
 import attributes from './model/Attributes';
 import { Sector } from './model/Sector';
+import Tools from './lib/Tools';
 
 export interface Debugery {
   prefix?: string;
@@ -49,6 +50,13 @@ export default () => {
       row: 0,
       col: 0,
     }),
+  });
+
+  debug({
+    label: 'Fetch Data',
+    dump: (async () => {
+      const res = await fetch('/csv/items.csv').then(console.log);
+    })(),
   });
 };
 
