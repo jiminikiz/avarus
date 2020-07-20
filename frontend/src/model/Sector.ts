@@ -1,5 +1,3 @@
-import { Gang } from './Gang';
-import { BoardTile } from '../lib/Board';
 import Tools from '@/lib/Tools';
 
 export enum SectorCode {
@@ -32,16 +30,16 @@ export interface Site {
   cash: number;
 }
 
-export interface SectorShape extends BoardTile {
+export interface SectorShape {
+  classification?: SectorClass;
+  controlled?: boolean;
+  maxSites?: number;
   sites?: Site[];
 }
 
 export class Sector implements SectorShape {
-  public row: number;
-  public col: number;
   public classification: SectorClass;
-
-  public controlled?: boolean = false;
+  public controlled: boolean = false;
   public maxSites: number = 3;
   public sites: Site[] = [];
 
@@ -50,8 +48,6 @@ export class Sector implements SectorShape {
   }
 
   constructor(sector: SectorShape) {
-    this.row = sector.row;
-    this.col = sector.col;
     this.sites = sector.sites || [];
     this.classification = this.classify();
   }
