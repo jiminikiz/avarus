@@ -1,5 +1,3 @@
-import { Dice } from '@/lib/Dice';
-
 const Tools = {
   request(url: string, options: object = {}) {
     return fetch(url, options).then((response) => response.json());
@@ -7,7 +5,8 @@ const Tools = {
   random: {
     enum<T>(anEnum: T): T[keyof T] {
         const enumValues = (Object.values(anEnum) as unknown) as Array<T[keyof T]>;
-        const randomIndex = Dice.roll(enumValues.length);
+        const randomIndex = Tools.random.number(0, enumValues.length);
+        // console.debug({ enumValues, randomIndex });
         return enumValues[randomIndex];
     },
     number(min: number, max: number): number {
