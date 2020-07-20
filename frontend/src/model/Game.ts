@@ -1,8 +1,6 @@
 import { Player } from './Player';
-import Data from '@/data';
-import Tools from '@/lib/Tools';
-import { Site } from './Sector';
 import { Board } from '@/lib/Board';
+import { GameBoard } from './GameBoard';
 
 export enum GameMode {
   Greed = 'Greed',
@@ -31,17 +29,10 @@ export class Game implements GameOptions {
   constructor(options: GameOptions) {
     this.players = options.players;
     this.mode = options.mode;
-    this.board = new Board({
+    this.board = new GameBoard({
       rows: 8,
       cols: 8,
+      players: options.players,
     });
-  }
-
-  // private generateSectors(board: Board) {}
-
-  private generateSites(
-    cardinality: number = 3,
-  ): Site[] {
-    return Tools.random.elements(cardinality, Data.sites) as Site[];
   }
 }
