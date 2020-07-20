@@ -1,5 +1,3 @@
-import { use } from 'vue/types/umd';
-
 export interface BoardTile {
   row: number;
   col: number;
@@ -24,26 +22,26 @@ export class Board implements BoardShape {
     this.rows = rows;
     this.cols = cols;
     this.useAlpha = useAlpha;
-    this.tiles = tiles || this.generate({ rows, cols });
+    this.tiles = tiles || this.generateTiles({ rows, cols });
   }
 
-  public generate(board: BoardShape): Map<string, BoardTile> {
-    const numCols = board.cols;
+  public generateTiles(board: BoardShape): Map<string, BoardTile> {
     const tiles = new Map();
-
     let rows = board.rows;
-    let cols = board.cols;
 
     while (rows--) {
-      while (cols--) {
-        const code = (rows + this.initialCharCode);
-        const char = String.fromCharCode(code);
-        const row = this.useAlpha ? char : (rows + 1);
-        const col = (cols + 1);
+      let cols = board.cols;
+      let row: any = (rows + 1 - board.rows) * (-1);
 
+      if (this.useAlpha) {
+        const code = (row + this.initialCharCode);
+        row = String.fromCharCode(code);
+      }
+
+      while (cols--) {
+        const col = (cols - board.cols) * (-1);
         tiles.set(`${row}${col}`, { row, col });
       }
-      cols = numCols;
     }
 
     return tiles;
