@@ -4,16 +4,20 @@ const Tools = {
   request(url: string, options: object = {}) {
     return fetch(url, options).then((response) => response.json());
   },
-  randomEnum<T>(anEnum: T): T[keyof T] {
-      const enumValues = (Object.values(anEnum) as unknown) as Array<T[keyof T]>;
-      const randomIndex = Dice.roll(enumValues.length);
-      return enumValues[randomIndex];
-  },
-  randomPositiveInteger(bound: number): number {
-    return Tools.randomInteger(0, bound);
-  },
-  randomInteger(min: number, max: number): number {
-    return min + Math.floor(Math.random() * max);
+  random: {
+    enum<T>(anEnum: T): T[keyof T] {
+        const enumValues = (Object.values(anEnum) as unknown) as Array<T[keyof T]>;
+        const randomIndex = Dice.roll(enumValues.length);
+        return enumValues[randomIndex];
+    },
+    number(min: number, max: number): number {
+      return min + Math.floor(Math.random() * max);
+    },
+    elements(select: number, collection: any[]): any[] {
+      return  [...collection].sort(
+        () => Math.random() - Math.random(),
+      ).slice(0, select);
+    },
   },
   csvJSON(csv: string): any {
     const lines = csv.split('\n');

@@ -2,9 +2,9 @@ name,type,research_cost,cost,tech_level,combat,defense,stealth,detect,chaos,cont
 "Metal Pipe",melee,0,1,0,1,0,-2,0,1,0,0,0,0,0,0,0,0,0
 "Lightning Spear",melee,10,25,9,12,0,-9,0,0,0,-1,2,0,0,0,0,0,0
 "Phaze Gloves",melee,8,15,7,8,0,-3,0,0,0,0,1,1,0,0,0,0,0
-"Polearm Melee",2,6,4,4,0,-8,0,0,0,0,0,0,0,0,0,0,0
+"Polearm",melee,2,6,4,4,0,-8,0,0,0,0,0,0,0,0,0,0,0
 "Thunder Mace",melee,6,13,6,7,0,-6,0,1,0,0,1,0,0,0,0,0,0
-"Whip Melee",1,3,2,2,0,-4,0,0,0,0,1,0,0,0,0,0,0
+"Whip",melee,1,3,2,2,0,-4,0,0,0,0,1,0,0,0,0,0,0
 "Acid Blade",blade,4,10,4,5,0,0,0,0,-1,-1,0,0,0,0,0,0,0
 "Combat Knife",blade,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
 "Force Blade",blade,9,20,8,9,1,-2,0,0,1,0,0,0,0,0,0,0,0
@@ -21,7 +21,7 @@ name,type,research_cost,cost,tech_level,combat,defense,stealth,detect,chaos,cont
 "Plasma Generator",ranged,15,45,10,15,1,-12,0,0,-1,-2,3,0,0,0,0,0,0
 "Rage Repeater",ranged,4,12,5,6,0,-3,0,1,0,0,0,0,0,0,0,0,0
 "Rocket Launcher",ranged,10,25,8,10,0,-9,0,1,0,0,0,0,0,0,0,0,0
-"Shotgun Ranged",1,6,3,4,0,-5,0,0,0,0,0,0,0,0,0,0,0
+"Shotgun",ranged,1,6,3,4,0,-5,0,0,0,0,0,0,0,0,0,0,0
 "Particle Accelerator",ranged,12,23,7,9,0,-1,0,0,0,-1,0,0,0,0,0,0,0
 "Assault Armor",armor,4,14,6,0,7,-8,0,0,0,0,1,0,0,0,0,0,0
 "Battle Suit",armor,15,40,10,0,12,-12,2,0,-1,1,3,0,2,0,0,0,0
@@ -37,11 +37,11 @@ name,type,research_cost,cost,tech_level,combat,defense,stealth,detect,chaos,cont
 "Combat Armor",armor,7,12,5,0,5,0,0,1,0,0,0,0,0,0,0,0,0
 "Riot Gear",armor,1,4,2,0,4,-8,0,0,0,0,0,0,0,0,0,0,0
 "Shock Pads",armor,0,3,1,0,2,-6,0,0,0,0,0,0,0,0,0,0,0
-"Speakers Gear",0,4,1,1,0,-3,-2,2,0,0,0,0,1,0,0,0,0
+"Speakers",gear,0,4,1,1,0,-3,-2,2,0,0,0,0,1,0,0,0,0
 "Lids",gear,0,3,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
 "Empathic Enhancers",gear,12,25,9,1,1,1,1,1,4,0,5,0,0,0,0,0,0
-"Paranades Gear",5,10,7,2,0,-3,0,1,2,0,3,0,0,0,0,0,0
-"Laptops Gear",10,12,6,0,0,-1,2,1,1,0,1,2,0,0,0,0,0
+"Paranades",gear,5,10,7,2,0,-3,0,1,2,0,3,0,0,0,0,0,0
+"Laptops",gear,10,12,6,0,0,-1,2,1,1,0,1,2,0,0,0,0,0
 "Nightvision",gear,4,8,5,0,0,0,2,0,0,0,0,0,0,0,0,0,0
 "Medkits",gear,1,6,3,0,0,0,0,0,0,3,0,0,0,0,0,0,0
 "Pain Killers",gear,4,6,4,0,2,0,-2,0,0,2,0,-2,0,0,0,0,0

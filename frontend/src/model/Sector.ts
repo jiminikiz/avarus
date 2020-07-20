@@ -34,7 +34,6 @@ export interface Site {
 
 export interface SectorShape extends BoardTile {
   sites?: Site[];
-  gangs?: Gang[];
 }
 
 export class Sector implements SectorShape {
@@ -45,7 +44,6 @@ export class Sector implements SectorShape {
   public controlled?: boolean = false;
   public maxSites: number = 3;
   public sites: Site[] = [];
-  public gangs: Gang[] = [];
 
   public get tolerance(): number {
     return this.classification.tolerance;
@@ -54,11 +52,8 @@ export class Sector implements SectorShape {
   constructor(sector: SectorShape) {
     this.row = sector.row;
     this.col = sector.col;
+    this.sites = sector.sites || [];
     this.classification = this.classify();
-  }
-
-  public addGang(gang: Gang): void {
-    this.gangs.push(gang);
   }
 
   public addSite(site: Site): void {
@@ -66,7 +61,7 @@ export class Sector implements SectorShape {
   }
 
   public classify(): SectorClass {
-    const code: SectorCode = Tools.randomEnum(SectorCode);
+    const code: SectorCode = Tools.random.enum(SectorCode);
     return SectorClasses.get(code) as SectorClass;
   }
 }

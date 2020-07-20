@@ -26,7 +26,7 @@ export class Dice {
   public static roll(
     sides: number,
   ): number {
-    return Tools.randomPositiveInteger(sides);
+    return Tools.random.number(1, sides);
   }
 
   /**

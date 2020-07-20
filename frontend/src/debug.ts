@@ -1,10 +1,10 @@
 import { Dice } from '@/lib/Dice';
-import { Board } from './lib/Board';
-import { Player, Color, Trait } from './model/Player';
-import { Gang } from './model/Gang';
-import attributes from './model/Attributes';
-import { Sector } from './model/Sector';
-import Tools from './lib/Tools';
+import { Board } from '@/lib/Board';
+import attributes from '@/model/Attributes';
+import { Player, Color, Trait } from '@/model/Player';
+import { Gang } from '@/model/Gang';
+import { Sector } from '@/model/Sector';
+import { Game, GameMode } from '@/model/Game';
 
 export interface Debugery {
   prefix?: string;
@@ -53,10 +53,11 @@ export default () => {
   });
 
   debug({
-    label: 'Fetch Data',
-    dump: (async () => {
-      const res = await fetch('/csv/items.csv').then(console.log);
-    })(),
+    label: 'A new Game',
+    dump: new Game({
+      players: [],
+      mode: GameMode.Acceptance,
+    }),
   });
 };
 
