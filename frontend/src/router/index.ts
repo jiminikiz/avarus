@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import TitleScreen from '../views/TitleScreen.vue';
+import TitleScreen from '@/views/TitleScreen.vue';
 
 Vue.use(VueRouter);
 
@@ -17,13 +17,13 @@ const routes: RouteConfig[] = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "settings" */ '../views/Settings.vue'),
+      import(/* webpackChunkName: "settings" */ '@/views/Settings.vue'),
   },
   {
     path: '/new-game',
     name: 'New Game',
     component: () =>
-      import(/* webpackChunkName: "new-game" */ '../views/NewGame.vue'),
+      import(/* webpackChunkName: "new-game" */ '@/views/NewGame.vue'),
   },
 ];
 

@@ -1,15 +1,24 @@
 import mutations from '@/store/game/mutations';
+import { Game } from '@/model/Game';
+
+export interface GUI {
+  sound: boolean;
+  detailedCombat: boolean;
+  idleWarnings: boolean;
+}
+
+export interface GameState {
+  GUI: GUI;
+  game: Game;
+}
 
 const state = {
-  options: {
+  GUI: {
     sound: true,
     detailedCombat: true,
     idleWarnings: true,
   },
-  scenario: {},
-  players: [],
-  difficulty: 0,
-  timeLimit: 0,
+  game: null,
 };
 
 export default {

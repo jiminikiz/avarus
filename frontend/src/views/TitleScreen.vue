@@ -18,16 +18,16 @@ export default {
       menuOptions: [
         {
           label: 'New Game',
-          path: '/',
+          path: '/new-game',
         },
-        {
-          label: 'Settings',
-          path: '/settings',
-        },
-        {
-          label: 'Quit',
-          path: '/',
-        },
+        // {
+        //   label: 'Settings',
+        //   path: '/settings',
+        // },
+        // {
+        //   label: 'Quit',
+        //   path: '/',
+        // },
       ],
     };
   },

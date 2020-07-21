@@ -1,6 +1,9 @@
+import { Game } from '@/model/Game';
+import { GameState } from './index';
+
 export default {
-  start: () => {
-    return;
+  newGame: (state: GameState, game: Game) => {
+    state.game = game;
   },
   options: () => {
     return;

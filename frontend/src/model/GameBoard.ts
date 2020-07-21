@@ -22,14 +22,13 @@ export class GameBoard extends Board {
 
   private generateSectors(): void {
     this.tiles.forEach((tile: BoardTile, key: string) => {
-      const sector = new Sector({ ...tile, sites: this.generateSites() });
+      const sites = this.generateSites();
+      const sector = new Sector({ ...tile, sites });
       this.sectors.set(key, sector);
     });
   }
 
-  private generateSites(
-    cardinality: number = 3,
-  ): Site[] {
+  private generateSites(cardinality: number = 3): Site[] {
     return Tools.random.elements(cardinality, Sites) as Site[];
   }
 }

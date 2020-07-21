@@ -18,7 +18,8 @@ module.exports = {
     loaderOptions: {
       stylus: {
         import: [
-          path.resolve(__dirname, './node_modules/milligram-stylus/dist/milligram.styl')
+          path.resolve(__dirname, './src/assets/styles/index.styl'),
+          path.resolve(__dirname, './node_modules/milligram-stylus/dist/milligram.styl'),
         ]
       },
     }

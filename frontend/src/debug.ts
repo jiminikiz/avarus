@@ -4,7 +4,7 @@ import attributes from '@/model/Attributes';
 import { Player, Color, Trait } from '@/model/Player';
 import { Gang } from '@/model/Gang';
 import { Sector } from '@/model/Sector';
-import { Game, GameMode } from '@/model/Game';
+import { Game, GameMode, GameDifficulty } from '@/model/Game';
 
 export interface Debugery {
   prefix?: string;
@@ -46,10 +46,7 @@ export default () => {
 
   debug({
     label: 'A new Sector',
-    dump: new Sector({
-      row: 0,
-      col: 0,
-    }),
+    dump: new Sector({}),
   });
 
   debug({
@@ -57,6 +54,7 @@ export default () => {
     dump: new Game({
       players: [],
       mode: GameMode.Acceptance,
+      difficulty: GameDifficulty.Easy,
     }),
   });
 };

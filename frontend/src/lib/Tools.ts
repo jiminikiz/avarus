@@ -1,6 +1,10 @@
 const Tools = {
-  request(url: string, options: object = {}) {
-    return fetch(url, options).then((response) => response.json());
+  async request(url: string, options: object = {}) {
+    const res = await fetch(url, options);
+    if (res.json !== undefined) {
+      return res.json();
+    }
+    return res;
   },
   random: {
     enum<T>(anEnum: T): T[keyof T] {
@@ -13,21 +17,11 @@ const Tools = {
       return min + Math.floor(Math.random() * max);
     },
     elements(select: number, collection: any[]): any[] {
-      return  [...collection].sort(
-        () => Math.random() - Math.random(),
-      ).slice(0, select);
+      return  Tools.randomize.elements(collection).slice(0, select);
     },
   },
-  csvJSON(csv: string): any {
-    const lines = csv.split('\n');
-    const headers = (lines.shift() || '').split(',');
-    return lines.map((line: string) => {
-      const columns = (line.split(',') || '');
-      return headers.reduce((json: any, header, i) => {
-        json[header] = columns[i];
-        return json;
-      }, {});
-    });
+  randomize: {
+    elements: (collection: any[]) => [...collection].sort(() => Math.random() - Math.random()),
   },
 };
 

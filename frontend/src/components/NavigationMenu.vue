@@ -1,11 +1,11 @@
 <template>
-  <nav class="menu">
+  <nav class="avarus-menu">
     <ul>
       <li
         v-for="({ label, path }, key) in links"
         :key="key"
       >
-        <router-link :to="path">
+        <router-link class="button" :to="path">
           {{ label }}
         </router-link>
       </li>
@@ -29,5 +29,11 @@ export default class NavigationMenu extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus"></style>
+
+<style scoped lang="stylus">
+  .avarus-menu {
+    li {
+      list-style: none;
+    }
+  }
+</style>
