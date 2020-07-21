@@ -2,6 +2,9 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "frontend/node_modules/milligram-stylus"
     }
   ],
   "settings": {
@@ -9,6 +12,8 @@
       "nestjs",
       "unequip",
       "unhide"
-    ]
+    ],
+    "stylint.alwaysShowStatus": true,
+    "stylint.stylintrcPath": "/Users/brandonjimenez/Workspace/jiminikiz/avarus/frontend/.stylintrc"
   }
 }

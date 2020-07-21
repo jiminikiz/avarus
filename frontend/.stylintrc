@@ -1,0 +1,6 @@
+{
+  "prefixVarsWithDollar": {
+    "error": false,
+    "expect": "never"
+  }
+}
