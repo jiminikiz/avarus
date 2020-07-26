@@ -66,7 +66,7 @@ export default {
 
     return {
       type: GameEventType.Command,
-      text: `Players gangs cause ${result.success} riots at [${sector.row},${sector.col}].`,
+      text: `Players gangs cause ${result.success} riots at [${sector}].`,
     };
   },
   [Command.Control]: (

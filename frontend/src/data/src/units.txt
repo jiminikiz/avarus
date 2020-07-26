@@ -1,0 +1,112 @@
+Gangs (90 total)
+
+   Hir = Hiring cost
+   Upk = Upkeep cost
+   Com = Combat
+   Def = Defense
+   Tec = Tech level
+   Stl = Stealth
+   Det = Detect
+   Cha = Chaos
+   Ctr = Control
+   Hel = Heal
+   Inf = Influence
+   Res = Research
+   Str = Strength
+   Bla = Blade/Melee
+   Ran = Ranged
+   Fig = Fighting
+   Mar = Martial Arts
+
+Name                     Hir Upk Com Def Tec Stl Det Cha Ctr Hel Inf Res Str Bla Ran Fig Mar
+--------------------------------------------------------------------------------------------
+ABOMINATORS                6   3   5   6   4   2   7  -2  -2   4   2   0   3   0   0   0   0
+ANGELS OF ARCADIA         11   6   6   7   9   7  10   3   5   5   3   1   4   0  -9  -5   0
+ANTI-TEMPLISTS             5   3   2   3   6   7   8   1   2   0   1   0   0   0   4   0   0
+ARCHITECTS GUILD           8   5   2   3   9   7   8   0   1   0   9   0   0   0   0   0   0
+AZURE ORDER                8   4   0  10   0  10  10   1   1   3   1   0   0   0   0  11   0
+BAD ARTISTS                6   3   0   0   4  10   5   3   1   0   1  -5   0   0   0   0   0
+BANKERS                   11  -1  -2   1   4  10  10   3   0   0   3   0  -1   0   0   0   0
+BICYCLE MESSENGERS         1   1   1   1   2   7  10   1   0   0   0   0   0   0   0   0   0
+BLOOD ORDER               11   6   0  13   0   9  11   3   0   3   0   0   1   0   0   0  12
+BOUNTY HUNTERS             8   5   3   4   8   8  13   0   0   3   2   0   2   0   4   0   0
+BROTHERS OF THE BLADE      7   3   1   5   8   8   8   0   0   0   1   0   0   7  -3   0   0
+CHAIN GANG                 3   2   2   3   5   6   6   0   0   0   3   0   3  -2   0   0   0
+COMPUTER HACKERS          15  -2  -1   0   8   9  14   4   1   0   2   3  -2  -1  -1  -1   0
+CORPORATE RAIDERS          7   5   0   1   9   8   8   5   5   0   6   0   0   0   0   0   0
+CRAP PUKES                 1   1   1   1   3   7   7   0   0   0   1   0   0   0   0   0   0
+CRIMSON DRAGONS            7   3   4   5   6   9   8   2   0   2   0   0   0   4   0   2   0
+CYBERSHARKS                5   3   3   5   6   5   8   3   0   1   0   0   3   0   0   0   0
+DEER HUNTERS               2   1   2   2   4   8   9   0   0   0   0   0   0   0   2   0   0
+DEVIL RIDERS               4   3   2   4   6   6   8   1   0   0   2   0   1   0   3   1   0
+DISCO FREAKS               3   1   1   3   4   3   9   1   0   1  -5   0   1   0   0   0   1
+DOG BOYS                   2   1   3   1   3   6  10   0   0   0   0  -1   0   0   1   0   0
+DOMINATRIX CLIQUE          3   1   2   5   2   3   9   0   2   0   1   0   4  -4  -3  -3   0
+DOOMSDAY CULT              6   3   1   3   6   9   9   3   3   1   3   2  -1   0   2   0   0
+EBON ORDER                 8   5   0  10   0  14   9   5  -1   2   3   0   2   0   0   0   7
+EMERALD ORDER              9   5   0  11   0  10  10   0   0   4   1   0   0   0   0   0  10
+EX-POSTAL WORKERS          4   3   0   1   4   7   8   1   0   0   0  -3   0   0   6   0   0
+EX-PRO ATHLETES            5   3   5   5   2   3   9   2  -2   1   1  -2   3   5   0   1   0
+FACEMEN                    5   3   1   1   6  10   9   2   5   0   3   0   0   0   0   0   0
+FIGHTING NUNS              5   3   3   4   5   7   9  -5   0   0   0   0   2   0   3   1   0
+FIRESTORM TEAM             8   4   4   4   8   7  10   2   0   0   3   0   0   2   4   0   0
+FOLLOWERS OF SQUIGGY       1   0   0   0   2  10   7   1   0   0   0   0   0   0   0   0   0
+FORGERS                   20  -3   3   4   9   8   8   1  -1   0   2   3   0   0   1   0   0
+FORTUNE TELLERS            5   3  -1   1   3  10  12   4   2   2   4   0   0   0   0   0   0
+GREY ORDER                 7   4   0   7   4   7  10   1   1   2   2  -2   2  -6  -6   0   8
+GROUND ZERO               12   7   7   8  10   6   8   5   2   4   3   0   0   0   5   2   0
+GUN RUNNERS                6   3   1   3   7  10   9   3  -1   0   0   0   0   0   6   0   0
+HAMMER SQUAD               2   2   1   3   2   5   7   0   0   0   2   0   2   0   0   0   0
+HAMMERFIST CLAN            2   2   0   5   0   7   7   0  -1   0   1   0   3   0   0   3   0
+HAPPY CAMPERS              4   3   0   3   8  10  12   3   1   3   0   0   0   0   0   0   0
+HEADBANGERS                3   2   1   2   3   7   5   2   0   0   0   0   2   0   0   0   0
+IRON CADRE                 9   5   4   4  10   7   9   1  -3   0   5   3   6   0   0   0   0
+LEATHERHEADS               3   1   3   4   2   7   6   0   0   0   1   0   2   0   0   0   0
+MAGENTA ORDER              6   3   0   8   1   9   9  -3   1   2   0   0   4   0   0   0   4
+MASTER LEECHES             3   1   0   1   4   9  10   3  -3   0   2   0   0   0   0   0   0
+METAL BURN                 7   4   3   4   7   6   8   3   0  -1   1   0   0   0   6   0   0
+MIDDLEMEN                  3   2   2   2   5   8   8   0   2   0   2   0   0   0   0   0   0
+MUTANT THUGS               3   2   0   1   3   7   6   0  -2   5   1   0   4   0   0   0   0
+MUTT ORDER                 2   1   0   4   1   7  10   0   0   1   0   0   0   0   0   0   3
+NANCY BOYS                 0   0   0   0   1   5   5   0  -1   0  -1   0   0   0   0   0   0
+NECK KICKERS               4   1   0   0   5   9  11  -6  -6  -2  -6  -6  -4  -4  -6  15   0
+NEW JACKS                  5   3   2   3   6   8   9   3   3   0   3  -1   0   0   4   0   0
+NIGHT WALKERS             10   6   3   6   5  11  11   4   4   5   6   0   4   0   0   5   0
+NINJA EXTRAS               5   2   2   3   5  10   8   0   0   2   0   0   0   1   0   3   0
+PAIN, INC.                 9   5   4   5  10   9   8   0   3   0   4   0   3   0   0   0   0
+PINHEADS                   5   2   3   2   1   3   7   0   0   1   2  -5   5  -2   0   0   0
+PRESS CORP                 6   4   1   2   8   5  11   4   1   0   4   0   0   0   0   0   0
+PSYCHOS                    4   3   5   1   7   5   7   3   0   1   0   1   0   0   0   0   0
+PUDDING CLOWNS             1   1  -2   1   1   8   8   0   0   9   0   0   0   0   0   0   0
+PYRAMID HEALERS            2   2   0   4   5   7  10   0   0   4  -1   1   0   0   0   0   0
+RACKETEERS                 7   4   0   3   9   9   7   6   2   0   2   0   0   1   3   0   0
+REGULATORS                 4   3   2   4   5   9   9   2   2   0   0   0   0   0   4   0   0
+RIG MASTERS                9   6   4   7  10   7   8   0   0   0   0   3   1   0   1   0   0
+RIGHT HANDS                0   0   1   1   7  10  10   1   1   0   0   0   0   0   0   0   0
+RIPPERS                    4   2   3   3   6   9   9   0   1   0   0   0   0   4  -4   0   0
+ROAD REPAIR CREW           4   2   2   3   6   6   7   2   1   0   0   0   3   0   0   0   0
+RUSTED BLADES              4   2   2   4   5   7   8   1   2  -1   0   1   0   4  -3   0   0
+SCIENCE TEAM               6   2  -3   1  10   7  10   1   0   0   0   4   0   0   3   0   0
+SCUMBAGS                   1   1   1   3   2   8   8   1  -1   0   0   0   0   0   0   0   0
+SEWER RATS                 1   1   2   2   2   9   7   0   0   0   0   0   1   0   0   0   0
+SHADOW NINJAS              6   4   3   4   5  13   8   1   0   0   0   0   1   3   0   5   0
+SHOCK TROOPERS             6   4   2   5  10   5   8   0   3   0   0   0   0   0   3   0   0
+SILVER ICE                 7   4   4   5   7  11   8   1   3   2   0   0   1   5   0   1   0
+SISTER OF THE SABER        6   3   1   4   8   7   9   0   0   0   2   0   0   6  -2   0   0
+SLAMDANCERS                3   2   1   4   3   5   7   3   0   2   0   0   1   0   0   3   0
+SNIPERS                    6   4   1   5   8  11  11  -2  -3   0  -2   0   0   0   8   0   0
+SOUTHSIDE PUNKS            4   2   3   3   5   7   7   1   0   0   0   0   0   0   2   0   0
+SPASMIC SUPERHEROES        7   4   5   5   7   8   8   4  -2   5   0   0   5   0   0   0   0
+STORMLORDS                 8   5   6   4   9   6   9   4   2   0   0   0   0   0   2   0   0
+SUICIDE SQUAD              3   0   9   0   9   1  10   0   0  -6   0  -3   0   0   0   0   0
+SUNSHINE CULT              1   0  -3   0   0  10   7   0   1   0   1   0   0   0   0   0   0
+TEAM STICK MAN            10   5   2   3  10  12  12   5   5   6   2   2   0   0   0   0   1
+TECHNO SCREAM              6   4   3   4  10   8   8   0   0   0   1   2   0   0   2   0   0
+THE CLEANERS               8   5   5   5   9   9  10   1   0   1   1   0   3   0   5   2   0
+TIGER CLAN                 8   5   4   8   3   6  10   2  -1   3   0   0   1   0  -2   0   4
+TRANTIAN FUSERS           10   5   3   6  10   5  10   1   0   3   2   5   2   0   0   0   0
+TROUBLEMAKERS              3   1   0   1   4   9   7   3   0   0   0   0   0   0   0   0   0
+USED CAR SALESMEN          3   2   1   3   4   5  10   0   1   0   3   0   0   0   0   0   0
+WHIZ KIDS                  5   3  -2   1   9  10   9   2   2   0   0   2   0   0   0   0   0
+WOLFPACK                   4   2   4   3   3  10   7   1   0   2   0   0   3   0  -3   0   0
+WOUNDED FOOLS              1   1   1   6   2   8   4   1   0  -3   0   0   2   0   0   0   0

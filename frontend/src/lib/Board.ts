@@ -1,31 +1,36 @@
+import { Deck } from './Deck';
+
 export interface BoardTile {
   row: number;
   col: number;
 }
 
-export interface BoardShape {
+export interface BoardOptions {
   rows: number;
   cols: number;
-  useAlpha?: boolean;
-  tiles?: Map<string, BoardTile>;
+  alphaTiles?: boolean;
 }
 
-export class Board implements BoardShape {
+export class Board {
   public rows: number = 0;
   public cols: number = 0;
-  public initialCharCode: number = 65;
-  public useAlpha: boolean;
 
+  public initialCharCode: number = 65;
+  public alphaTiles: boolean;
   public tiles: Map<string, BoardTile>;
 
-  constructor({ rows, cols, useAlpha = true, tiles}: BoardShape) {
+  constructor({
+    rows,
+    cols,
+    alphaTiles = true,
+  }: BoardOptions) {
     this.rows = rows;
     this.cols = cols;
-    this.useAlpha = useAlpha;
-    this.tiles = tiles || this.generateTiles({ rows, cols });
+    this.alphaTiles = alphaTiles;
+    this.tiles = this.generateTiles({ rows, cols });
   }
 
-  public generateTiles(board: BoardShape): Map<string, BoardTile> {
+  public generateTiles(board: BoardOptions): Map<string, BoardTile> {
     const tiles = new Map();
     let rows = board.rows;
 
@@ -33,7 +38,7 @@ export class Board implements BoardShape {
       let cols = board.cols;
       let row: any = (rows + 1 - board.rows) * (-1);
 
-      if (this.useAlpha) {
+      if (this.alphaTiles) {
         const code = (row + this.initialCharCode);
         row = String.fromCharCode(code);
       }

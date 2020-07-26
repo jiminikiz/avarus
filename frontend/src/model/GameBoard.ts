@@ -1,34 +1,44 @@
-import { Sites } from '@/data';
 import Tools from '@/lib/Tools';
-import { BoardTile, Board, BoardShape } from '@/lib/Board';
 
 import { Site, Sector } from './Sector';
-import { Gang } from './Gang';
+import { Sites } from '@/data';
+
+import { BoardTile, Board, BoardOptions } from '@/lib/Board';
+import { Deck } from '@/lib/Deck';
+
 import { Player } from './Player';
 
-
-export interface GameBoardOptions extends BoardShape {
+export interface GameBoardOptions extends BoardOptions {
   players: Player[];
+  decks: Deck[];
 }
 
 export class GameBoard extends Board {
   public sectors: Map<string, Sector> = new Map();
-  public gangs: Map<string, Gang[]> = new Map();
+  public decks: Map<string, Deck> = new Map();
 
   constructor(options: GameBoardOptions) {
     super(options);
+    this.setDecks(options.decks);
+    console.debug('GameBoard:19', options);
     this.generateSectors();
   }
 
   private generateSectors(): void {
-    this.tiles.forEach((tile: BoardTile, key: string) => {
-      const sites = this.generateSites();
-      const sector = new Sector({ ...tile, sites });
-      this.sectors.set(key, sector);
-    });
+    this.tiles.forEach(this.generateSector.bind(this));
   }
 
-  private generateSites(cardinality: number = 3): Site[] {
+  private generateSector(tile: BoardTile, key: string): void {
+    const sites = this.selectRandomSites();
+    const sector = new Sector({ ...tile, sites });
+    this.sectors.set(key, sector);
+  }
+
+  private selectRandomSites(cardinality: number = 3): Site[] {
     return Tools.random.elements(cardinality, Sites) as Site[];
+  }
+
+  private setDecks(decks: Deck[]) {
+    decks.forEach((deck: Deck) => this.decks.set(deck.name, deck));
   }
 }

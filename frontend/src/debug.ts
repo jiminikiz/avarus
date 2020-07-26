@@ -1,6 +1,6 @@
 import { Dice } from '@/lib/Dice';
 import { Board } from '@/lib/Board';
-import attributes from '@/model/Attributes';
+import { attributes } from '@/model/Attributes';
 import { Player, Color, Trait } from '@/model/Player';
 import { Gang } from '@/model/Gang';
 import { Sector } from '@/model/Sector';

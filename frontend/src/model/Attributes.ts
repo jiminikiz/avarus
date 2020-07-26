@@ -18,7 +18,14 @@ export interface Attributes {
   upkeep: number;
 }
 
-const attributes: Attributes = {
+export enum AttributeType {
+  Information,
+  Statistics,
+  CommandSkills,
+  CombatSkills,
+}
+
+export const attributes: Attributes = {
   blade: 0,
   chaos: 0,
   combat: 0,
@@ -38,5 +45,15 @@ const attributes: Attributes = {
   upkeep: 0,
 };
 
-export default attributes;
+export const attributeFields: Map<AttributeType, string[]> = new Map([
+  [ AttributeType.Information, ['force', 'upkeep', 'tech'] ],
+  [ AttributeType.Statistics, ['combat', 'defense', 'stealth', 'detect'] ],
+  [ AttributeType.CommandSkills, ['chaos', 'control', 'heal', 'influence', 'research'] ],
+  [ AttributeType.CombatSkills, ['strength', 'blade', 'range', 'fighting', 'martialArts'] ],
+]);
+
+export default {
+  attributes,
+  attributeFields,
+};
 

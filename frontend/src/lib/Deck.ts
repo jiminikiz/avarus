@@ -6,13 +6,16 @@ export interface DeckCard {
 }
 
 export interface DeckOptions {
+  name: string;
   cards: DeckCard[];
 }
 
 export class Deck implements DeckOptions {
+  public name: string;
   public cards: DeckCard[];
 
-  constructor({ cards = [] }: DeckOptions) {
+  constructor({ name, cards = [] }: DeckOptions) {
+    this.name = name;
     this.cards = [...cards];
   }
 

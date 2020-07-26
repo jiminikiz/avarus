@@ -1,0 +1,47 @@
+Sites (24 total)
+
+    Rst = Resistance
+    Sup = Support
+    Tol = Tolerance
+    Cas = Cash
+    Com = Combat
+    Def = Defense
+    Stl = Stealth
+    Det = Detect
+    Cha = Chaos
+    Ctr = Control
+    Hel = Heal
+    Inf = Influence
+    Res = Research
+    Str = Strength
+    Bla = Blade/Melee
+    Ran = Ranged
+    Fig = Fighting
+    Mar = Martial Arts
+    ED  = Equipment discount (%)
+    TL  = Enables research through tech level x
+
+Name                  Res Sup Tol Cas Com Def Stl Det Cha Ctr Hel Inf Rsr Str Bla Ran Fig Mar  ED  TL
+-----------------------------------------------------------------------------------------------------
+ARBORETUM               5   1  -1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ARENA                  11   1   2   3   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+BACK ALLEY NETWORK      9   0   0   1   0   0   3   0   2   0   0   0   0   0   0   0   0   0   0   0
+BAR/DANCE CLUB         10  -2   0   2   0   0   1   0   3   0   0   0   0   0   0   1   0   0   0   0
+CASINO                 14  -1   0   6   0   0   1   0   1   0   0   0   0   0   0   0   0   0   0   0
+CLINIC                  9   2   0   0   0   0   0   0   0   0   3   0   0   0   0   0   0   0   0   0
+CONDOS                  9   2   1   1   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0   0
+CORPORATE TOWERS       13   2  -2   5   0   1   0   2   0   0   0   0   0   0   0   0   0   0   0   0
+FACTORY                10   0   0   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0  30   0
+GYM                     7   1   0   1   0   0   0   0   0   0   0   0   0   1   0   0   0   0   0   0
+HEADQUARTERS            0   0   2   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+HOSPITAL               15   4   0   1   0   1   0   0   0   0   6   0   0   0   0   0   0   0   0   0
+HOUSING                 5   1   0   0   0   0   1   0   1   0   0   0   0   0   0   0   0   0   0   0
+MASS MEDIA STATION     13   2   1   2   0   0   0   3   0   0   0   1   0   0   0   0   0   0   0   0
+MUSEUM                  4   1  -1   0   0   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0
+OFFICES                 8   1  -1   2   0   0   0   1   0   0   0   0   0   0   0   0   0   0   0   0
+PARKING LOT             4   0   0   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+RESEARCH LAB           12   1   0  -2   0   0   0   0   0   0   1   0   5   0   0   0   0   0   0  10
+SCIENCE CENTER          8   0   0  -1   0   0   0   0   0   0   0   0   2   0   0   0   0   0   0   8
+TEMPLE                 16   3  -2   2   0   0   1   0   0   0   2   2   0   0   0   0   2   0   0   0
+VACANT LOT              4   0   1   0   0   0   0   0   1   0   0   0   0   0   0   0   0   0   0   0
+WASTE INCINERATOR       6   1   0   1   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0   0

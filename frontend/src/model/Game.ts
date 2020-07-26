@@ -1,6 +1,11 @@
-import { Player } from './Player';
+import { Gangs } from '@/data';
+
+import { Deck } from '@/lib/Deck';
+
 import { Board } from '@/lib/Board';
 import { GameBoard } from './GameBoard';
+
+import { Player } from './Player';
 
 export enum GameMode {
   Greed = 'Greed',
@@ -30,7 +35,6 @@ export interface GameOptions {
 }
 
 export class Game implements GameOptions {
-
   public players: Player[];
   public mode: GameMode;
   public difficulty: GameDifficulty;
@@ -38,6 +42,11 @@ export class Game implements GameOptions {
   public board: Board;
 
   constructor(options: GameOptions) {
+    const GangsDeck = new Deck({
+      name: 'Gangs',
+      cards: Gangs,
+    });
+
     this.players = options.players;
     this.mode = options.mode;
     this.difficulty = options.difficulty;
@@ -45,6 +54,7 @@ export class Game implements GameOptions {
       rows: 8,
       cols: 8,
       players: options.players,
+      decks: [GangsDeck],
     });
   }
 }
