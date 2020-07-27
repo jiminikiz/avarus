@@ -14,6 +14,18 @@ export interface Debugery {
 }
 
 export default () => {
+  const player = new Player({
+    color: Color.Black,
+    kingpin: {
+      trait: Trait.Pride,
+      henchmen: new Gang({
+        name: 'Raincoat University',
+        attributes,
+      }),
+    },
+  });
+
+
   debug({
     label: 'Roll four, six-sided die',
     dump: Dice.shaker({
@@ -32,16 +44,7 @@ export default () => {
 
   debug({
     label: 'A new Player',
-    dump: new Player({
-      color: Color.Black,
-      kingpin: {
-        trait: Trait.Pride,
-        henchmen: new Gang({
-          name: 'Raincoat University',
-          attributes,
-        }),
-      },
-    }),
+    dump: player,
   });
 
   debug({
@@ -52,9 +55,13 @@ export default () => {
   debug({
     label: 'A new Game',
     dump: new Game({
-      players: [],
+      players: [ player ],
       mode: GameMode.Acceptance,
       difficulty: GameDifficulty.Easy,
+      board: {
+        rows: 8,
+        cols: 8,
+      },
     }),
   });
 };
