@@ -1,4 +1,10 @@
-import { player, diceRoll, board, sector, game } from './fodder';
+import {
+  player,
+  diceRoll,
+  board,
+  sector,
+  game,
+} from './fodder';
 
 export const DebugRoutine = () => {
   Logger.debug('Roll four, six-sided die', diceRoll);

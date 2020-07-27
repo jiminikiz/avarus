@@ -1,5 +1,3 @@
-import { Deck } from './Deck';
-
 export interface BoardTile {
   row: number;
   col: number;
