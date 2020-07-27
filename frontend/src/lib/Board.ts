@@ -15,8 +15,9 @@ export class Board {
   public rows: number = 0;
   public cols: number = 0;
 
-  public initialCharCode: number = 65;
+  public alphaCode: number = 65;
   public alphaTiles: boolean;
+
   public tiles: Map<string, BoardTile>;
 
   constructor({
@@ -30,16 +31,20 @@ export class Board {
     this.tiles = this.generateTiles({ rows, cols });
   }
 
-  public generateTiles(board: BoardOptions): Map<string, BoardTile> {
+  public generateTiles(
+    board: BoardOptions,
+  ): Map<string, BoardTile> {
     const tiles = new Map();
     let rows = board.rows;
 
+    // Uses two high performance loops to create the tiles for the board:
+    // - accounts for reverse looping, while still counting forwards when setting tiles.
     while (rows--) {
       let cols = board.cols;
       let row: any = (rows + 1 - board.rows) * (-1);
 
       if (this.alphaTiles) {
-        const code = (row + this.initialCharCode);
+        const code = (row + this.alphaCode);
         row = String.fromCharCode(code);
       }
 
