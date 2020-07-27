@@ -40,28 +40,34 @@ export interface GameOptions {
 }
 
 export class Game {
-  public players: Player[];
   public mode: GameMode;
   public difficulty: GameDifficulty;
-  public timeLimit: number = Infinity;
+  public timeLimit: number;
+
+  public players: Player[];
   public board: Board;
   public decks: Map<string, Deck> = new Map();
   public sectors: Map<string, Sector> = new Map();
 
-  constructor(options: GameOptions) {
-    // TODO: Make Dynamic, good for now
-    const { rows, cols } = options.board;
+  constructor({
+    mode,
+    difficulty,
+    timeLimit = Infinity,
+    players,
+    board: { rows, cols },
+  }: GameOptions) {
+    // TODO: Support dynamic loading here
     const GangsDeck = new Deck({ name: 'Gangs', cards: Gangs });
 
-    this.mode = options.mode;
-    this.difficulty = options.difficulty;
+    this.mode = mode;
+    this.difficulty = difficulty;
+    this.timeLimit = timeLimit;
     this.board = new Board({ rows, cols });
-    this.players = options.players;
+    this.players = players;
 
-    this.setDecks([GangsDeck]);
-    this.dealCards(options.players, GangsDeck);
+    this.setDecks([ GangsDeck ]);
+    this.dealCards(players, GangsDeck);
     this.generateSectors();
-
   }
 
   private setDecks(decks: Deck[]): void {

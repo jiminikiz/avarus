@@ -25,7 +25,6 @@ export default () => {
     },
   });
 
-
   debug({
     label: 'Roll four, six-sided die',
     dump: Dice.shaker({
@@ -35,7 +34,7 @@ export default () => {
   });
 
   debug({
-    label: 'A 9x9 game board',
+    label: 'A 8x8 game board',
     dump: new Board({
       rows: 8,
       cols: 8,
