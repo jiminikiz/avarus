@@ -30,13 +30,13 @@ export interface Kingpin {
 export interface PlayerShape {
   color: Color;
   kingpin: Kingpin;
-  gangs?: Gang[];
 }
 
-export class Player implements PlayerShape {
+export class Player {
   public color: Color;
   public kingpin: Kingpin;
-  public gangs: Gang[];
+  public hired: Gang[];
+  public hand: Gang[] = [];
 
   public constructor({
     color,
@@ -44,6 +44,6 @@ export class Player implements PlayerShape {
   }: PlayerShape) {
     this.color = color;
     this.kingpin = kingpin;
-    this.gangs = [new Gang(kingpin.henchmen)];
+    this.hired = [new Gang(kingpin.henchmen)];
   }
 }
