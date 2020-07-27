@@ -10,6 +10,11 @@ export interface DeckOptions {
   cards: DeckCard[];
 }
 
+export interface DealOptions {
+  handSize: number;
+  playerCount: number;
+}
+
 export class Deck implements DeckOptions {
   public name: string;
   public cards: DeckCard[];
@@ -17,9 +22,21 @@ export class Deck implements DeckOptions {
   constructor({ name, cards = [] }: DeckOptions) {
     this.name = name;
     this.cards = [...cards];
+    this.shuffle();
   }
 
-  public draw(numberOfCards: number) {
+  public deal(options: DealOptions): DeckCard[][] {
+    const dealOut = [];
+    let count = Number(options.playerCount);
+
+    while (count--) {
+      dealOut.push(this.draw(options.handSize));
+    }
+
+    return dealOut;
+  }
+
+  public draw(numberOfCards: number): DeckCard[] {
     return this.cards.splice(0, numberOfCards);
   }
 
