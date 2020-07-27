@@ -8,7 +8,7 @@ export interface GameEventShape {
   data?: any;
 }
 
-export class GameEvent implements GameEventShape {
+export class GameEvent {
   public type: GameEventType;
   public text: string;
   public data?: any;

@@ -15,7 +15,7 @@ export interface DealOptions {
   playerCount: number;
 }
 
-export class Deck implements DeckOptions {
+export class Deck {
   public name: string;
   public cards: DeckCard[];
 
