@@ -7,11 +7,10 @@
         <label>Player Name</label>
         <input type="text" placeholder="Kage Chax">
         <label>Mode</label>
-        <select>
-          <option value="0-13">0-13</option>
-          <option value="14-17">14-17</option>
-          <option value="18-23">18-23</option>
-          <option value="24+">24+</option>
+        <select v-model="selected.mode">
+          <option v-for="(key, mode) in modes" :value="mode" :key="key">
+            {{ mode }}
+          </option>
         </select>
         <div class="float-right">
           <input type="checkbox" id="confirmField">
@@ -24,7 +23,7 @@
 </template>
 
 <script lang="ts">
-// @ is an alias to /src
+import { GameMode } from '@/model/Game';
 import NavigationMenu from '@/components/NavigationMenu.vue';
 
 export default {
@@ -42,7 +41,10 @@ export default {
   // },
   data: () => {
     return {
-
+      modes: GameMode,
+      selected: {
+        mode: 'Greed'
+      },
     };
   },
   methods: {
