@@ -1,4 +1,4 @@
-const Tools = {
+export const Tools = {
   async request(url: string, options: object = {}) {
     const res = await fetch(url, options);
     if (res.json !== undefined) {
