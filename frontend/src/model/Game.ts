@@ -1,7 +1,5 @@
 import { Gangs } from '@/data';
-
 import { Deck } from '@/lib/Deck';
-
 import { Board } from '@/lib/Board';
 import { GameBoard } from './GameBoard';
 
@@ -32,29 +30,41 @@ export interface GameOptions {
   mode: GameMode;
   difficulty: GameDifficulty;
   timeLimit?: number;
+  board: {
+    rows: number;
+    cols: number;
+  };
 }
 
-export class Game implements GameOptions {
+export class Game {
   public players: Player[];
   public mode: GameMode;
   public difficulty: GameDifficulty;
   public timeLimit: number = Infinity;
   public board: Board;
+  public decks: Map<string, Deck> = new Map();
 
   constructor(options: GameOptions) {
-    const GangsDeck = new Deck({
-      name: 'Gangs',
-      cards: Gangs,
-    });
+    // TODO: Make Dynamic, good for now
+    const { rows, cols } = options.board;
+    const GangsDeck = new Deck({ name: 'Gangs', cards: Gangs });
 
+    this.setDecks([GangsDeck]);
+    this.setPlayers(options.players, GangsDeck);
     this.players = options.players;
     this.mode = options.mode;
     this.difficulty = options.difficulty;
-    this.board = new GameBoard({
-      rows: 8,
-      cols: 8,
-      players: options.players,
-      decks: [GangsDeck],
+    this.board = new GameBoard({ rows, cols });
+  }
+
+  private setDecks(decks: Deck[]): void {
+    decks.forEach((deck: Deck) => this.decks.set(deck.name, deck));
+  }
+
+  private setPlayers(players: Player[], deck: Deck): void {
+    const deal = deck.deal({
+      handSize: 3,
+      playerCount: players.length,
     });
   }
 }
