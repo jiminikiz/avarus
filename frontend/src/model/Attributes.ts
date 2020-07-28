@@ -18,6 +18,10 @@ export interface Attributes {
   upkeep: number;
 }
 
+export interface Entity extends Attributes {
+  name: string;
+}
+
 export enum AttributeType {
   Information,
   Statistics,

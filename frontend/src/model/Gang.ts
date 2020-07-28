@@ -1,4 +1,4 @@
-import { Attributes } from '@/model/Attributes';
+import { Attributes, Entity } from '@/model/Attributes';
 import {
   EquipmentType,
   Weapon,
@@ -22,11 +22,6 @@ export enum GangStatus {
   isTerminated = 'Terminated',
 }
 
-export interface GangShape {
-  name: string;
-  attributes: Attributes;
-}
-
 export class Gang {
   public name: string;
   public force: number;
@@ -41,12 +36,11 @@ export class Gang {
 
   private maxForce = 10;
 
-  public constructor(shape: GangShape) {
-    const { attributes } = shape;
-    this.name = shape.name;
-    this.force = attributes.force; // TODO: Random starting force
+  public constructor(gang: Entity) {
+    this.name = gang.name;
+    this.force = gang.force; // TODO: Random starting force
     this.status = GangStatus.isIdle;
-    this.attributes = attributes;
+    this.attributes = gang;
   }
 
   public get statistics(): Attributes {
