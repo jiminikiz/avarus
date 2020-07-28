@@ -1,4 +1,4 @@
-import { Gang, GangShape } from '@/model/Gang';
+import { Gang } from '@/model/Gang';
 
 export enum Color {
   Black = '000',
@@ -23,27 +23,33 @@ export enum Trait {
 }
 
 export interface Kingpin {
-  henchmen: GangShape;
-  trait: Trait;
+  // trait: Trait;
+  henchmen: Gang;
 }
 
-export interface PlayerShape {
+export interface PlayerOptions {
+  name: string;
   color: Color;
   kingpin: Kingpin;
 }
 
 export class Player {
+  public name: string;
   public color: Color;
   public kingpin: Kingpin;
-  public hired: Gang[];
+  public hired: Map<string, Gang> = new Map();
   public hand: Gang[] = [];
 
   public constructor({
+    name,
     color,
     kingpin,
-  }: PlayerShape) {
+  }: PlayerOptions) {
+    const { henchmen } = kingpin;
+    this.hired.set(henchmen.name, henchmen);
+
+    this.name = name;
     this.color = color;
     this.kingpin = kingpin;
-    this.hired = [new Gang(kingpin.henchmen)];
   }
 }
