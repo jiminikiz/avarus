@@ -46,7 +46,7 @@ export class Game {
 
   public players: Player[];
   public board: Board;
-  public decks: Map<string, Deck> = new Map();
+  public gangs: Deck;
   public sectors: Map<string, Sector> = new Map();
 
   constructor({
@@ -57,21 +57,16 @@ export class Game {
     board: { rows, cols },
   }: GameOptions) {
     // TODO: Support dynamic loading here
-    const GangsDeck = new Deck({ name: 'Gangs', cards: Gangs });
-
     this.mode = mode;
     this.difficulty = difficulty;
     this.timeLimit = timeLimit;
-    this.board = new Board({ rows, cols });
     this.players = players;
 
-    this.setDecks([ GangsDeck ]);
-    this.dealCards(players, GangsDeck);
-    this.generateSectors();
-  }
+    this.board = new Board({ rows, cols });
+    this.gangs = new Deck({ name: 'Gangs', cards: Gangs });
 
-  private setDecks(decks: Deck[]): void {
-    decks.forEach((deck: Deck) => this.decks.set(deck.name, deck));
+    this.dealCards(players, this.gangs);
+    this.generateSectors();
   }
 
   private dealCards(players: Player[], deck: Deck): void {
