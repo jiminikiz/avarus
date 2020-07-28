@@ -13,12 +13,13 @@ export const diceRoll = Dice.shaker({
 });
 
 export const player = new Player({
+  name: 'Harginold Regreeves',
   color: Color.Black,
   kingpin: {
-    trait: Trait.Pride,
+    // trait: Trait.Pride,
     henchmen: new Gang({
       name: 'Raincoat University',
-      attributes,
+      ...attributes,
     }),
   },
 });

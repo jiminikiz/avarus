@@ -7,8 +7,8 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 
-import { DebugRoutine } from './debug/index';
-DebugRoutine();
+// import { DebugRoutine } from './debug/index';
+// DebugRoutine();
 
 // const socket = io(process.env.VUE_APP_SOCKET_ADDRESS);
 // Vue.use(VueSocketIOExt, socket);
