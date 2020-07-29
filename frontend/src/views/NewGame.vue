@@ -33,7 +33,7 @@
           </option>
         </select>
       </fieldset>
-      <button class="button" @click="newGame()">
+      <button class="button" @click="startGame()">
         Start Game
       </button>
     </section>
@@ -41,32 +41,26 @@
 </template>
 
 <script lang="ts">
+import { mapActions } from 'vuex';
+
 import { Gangs, Names } from '@/data';
+import Tools from '@/lib/Tools';
 
 import { Game, GameMode, GameDifficulty } from '@/model/Game';
 import { Color, Player } from '@/model/Player';
 import { Gang } from '@/model/Gang';
 
 import NavigationMenu from '@/components/NavigationMenu.vue';
-import Tools from '../lib/Tools';
 
 export default {
   name: 'new-game-screen',
   components: {
     NavigationMenu,
   },
-  // sockets: {
-  //   connect() {
-  //     console.log('socket:connected');
-  //   },
-  //   custom(value) {
-  //     console.log('emit:', value);
-  //   }
-  // },
   created() {
     this.generateName();
   },
-  data: () => {
+  data() {
     return {
       modes: GameMode,
       colors: Color,
@@ -86,22 +80,26 @@ export default {
     };
   },
   methods: {
+    ...mapActions('game', [
+      'newGame',
+    ]),
     generateName(): void {
       this.player.name = Tools.random.elements(2, Names).map(({ name }) => name).join(' ');
     },
-    newGame(): void {
+    startGame(): void {
       const game = new Game({
         ...this.game,
         players: [new Player(this.player)],
         board: { rows: 8, cols: 8 },
       });
 
-      console.log(game);
+      this.newGame(game);
+      this.$router.push({ path: '/game' });
     },
   },
 };
 </script>
 
-<style>
+<style lang="stylus">
 
 </style>

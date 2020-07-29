@@ -23,7 +23,6 @@ export interface NavigationMenuItem {
 @Component
 export default class RadioSelector extends Vue {
   @Prop() private items!: NavigationMenuItem[];
-
 }
 </script>
 

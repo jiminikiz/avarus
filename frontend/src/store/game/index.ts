@@ -1,4 +1,5 @@
 import mutations from '@/store/game/mutations';
+import actions from '@/store/game/actions';
 import { Game } from '@/model/Game';
 
 export interface GUI {
@@ -22,6 +23,8 @@ const state = {
 };
 
 export default {
+  namespaced: true,
+  actions,
   mutations,
   state,
 };
