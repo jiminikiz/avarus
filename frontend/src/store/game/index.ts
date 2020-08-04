@@ -1,6 +1,8 @@
 import mutations from '@/store/game/mutations';
 import actions from '@/store/game/actions';
-import { Game } from '@/model/Game';
+import { Game, GameMode, GameDifficulty } from '@/model/Game';
+import { Player, Color } from '@/model/Player';
+import { Gangs } from '@/data';
 
 export interface GUI {
   sound: boolean;
@@ -20,6 +22,18 @@ const state = {
     idleWarnings: true,
   },
   game: null,
+  debugGame: new Game({
+    mode: GameMode.Greed,
+    difficulty: GameDifficulty.Medium,
+      board: { rows: 8, cols: 8 },
+    players: [
+      new Player({
+        name: '',
+        color: Color.Red,
+        kingpin: { henchmen: Gangs[0] },
+      }),
+    ],
+  }),
 };
 
 export default {

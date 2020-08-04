@@ -27,11 +27,14 @@ export default class GameBoard extends Vue {
   .game-board {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
-    height: 320px;
-    width: 320px;
+    height: 640px;
+    width: 640px;
     border: 1px solid color-primary;
     .tile {
       border: 1px solid color-primary;
+      &:hover {
+        border-color: color-secondary;
+      }
     }
   }
 </style>

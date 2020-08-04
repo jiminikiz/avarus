@@ -5,7 +5,8 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
+
 import GameBoard from '@/components/GameBoard';
 
 export default {
@@ -14,7 +15,9 @@ export default {
     GameBoard,
   },
   created() {
-    console.debug(this.game);
+    if (this.game === null) {
+      this.newGame(this.debugGame);
+    }
   },
   data() {
     return {
@@ -22,7 +25,15 @@ export default {
     };
   },
   computed: {
-    ...mapState('game', ['game']),
+    ...mapState('game', [
+      'game',
+      'debugGame',
+    ]),
+  },
+  methods: {
+    ...mapActions('game', [
+      'newGame',
+    ]),
   },
 };
 </script>
