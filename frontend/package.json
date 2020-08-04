@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "pm2 start --name avarus-client npm -- run serve",
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 4040",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
