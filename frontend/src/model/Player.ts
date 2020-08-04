@@ -46,7 +46,7 @@ export class Player {
     kingpin,
   }: PlayerOptions) {
     const { henchmen } = kingpin;
-    this.hired.set(henchmen.name, henchmen);
+    this.hired.set('henchmen', henchmen);
 
     this.name = name;
     this.color = color;

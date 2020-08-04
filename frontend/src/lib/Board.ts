@@ -1,3 +1,5 @@
+import Tools from './Tools';
+
 export interface BoardTile {
   row: number;
   col: number;
@@ -29,6 +31,10 @@ export class Board {
     this.tiles = this.generateTiles({ rows, cols });
   }
 
+  public get keys() {
+    return Array.from(this.tiles.keys());
+  }
+
   public generateTiles(
     board: BoardOptions,
   ): Map<string, BoardTile> {
@@ -53,5 +59,9 @@ export class Board {
     }
 
     return tiles;
+  }
+
+  public getRandomTiles(count: number): string[] {
+    return Tools.random.elements(count, this.keys);
   }
 }

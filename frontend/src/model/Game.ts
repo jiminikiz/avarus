@@ -48,6 +48,11 @@ export class Game {
   public board: Board;
   public gangs: Deck;
   public sectors: Map<string, Sector> = new Map();
+  public placements: Map<string, Gang> = new Map();
+
+  public get coordinates() {
+    return Array.from(this.sectors.keys());
+  }
 
   constructor({
     mode,
@@ -67,6 +72,11 @@ export class Game {
 
     this.dealCards(players, this.gangs);
     this.generateSectors();
+    this.placeGangs(players);
+
+    console.debug({
+      game: this,
+    });
   }
 
   private dealCards(players: Player[], deck: Deck): void {
@@ -86,6 +96,17 @@ export class Game {
 
   private generateSectors(): void {
     this.board.tiles.forEach(this.generateSector.bind(this));
+  }
+
+  private getRandomCoordinates(count: number): string[] {
+    return Tools.random.elements(count, this.coordinates);
+  }
+
+  private placeGangs(players: Player[]) {
+    const randomCoordinates: string[] = this.getRandomCoordinates(players.length);
+    players.forEach(({ hired }: Player) => {
+      return this.placements.set(randomCoordinates.pop(), hired.get('henchmen'));
+    });
   }
 
 }
