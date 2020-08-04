@@ -33,6 +33,7 @@ export default class GameBoard extends Vue {
     .tile {
       border: 1px solid color-primary;
       &:hover {
+        background-color: color-glass;
         border-color: color-secondary;
       }
     }
