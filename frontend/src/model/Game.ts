@@ -6,7 +6,9 @@ import { Deck } from '@/lib/Deck';
 
 import { Player } from './Player';
 import { Sector, Site } from './Sector';
-import { Gang } from './Gang';
+import { Gang, Debuggers } from './Gang';
+import { TurnPhase, Turn } from './Turn';
+import { GameEvent } from '@/lib/GameEvent';
 
 export enum GameMode {
   Greed = 'Greed',
@@ -42,13 +44,26 @@ export interface GameOptions {
 export class Game {
   public mode: GameMode;
   public difficulty: GameDifficulty;
-  public timeLimit: number;
+  public timeLimit: number = Infinity;
 
-  public players: Player[];
   public board: Board;
   public gangs: Deck;
+
   public sectors: Map<string, Sector> = new Map();
-  public placements: Map<string, Gang> = new Map();
+  public turns: Turn[] = [];
+  public events: GameEvent[] = [];
+  public players: Player[];
+
+  public activePlayerIndex: number = 0;
+  public activeTurnIndex: number = 0;
+
+  public get activePlayer(): Player {
+    return this.players[this.activePlayerIndex];
+  }
+
+  public get activeTurn(): Turn {
+    return this.turns[this.activeTurnIndex];
+  }
 
   public get coordinates() {
     return Array.from(this.sectors.keys());
@@ -63,9 +78,9 @@ export class Game {
   }: GameOptions) {
     // TODO: Support dynamic loading here
     this.mode = mode;
-    this.difficulty = difficulty;
-    this.timeLimit = timeLimit;
     this.players = players;
+    this.timeLimit = timeLimit;
+    this.difficulty = difficulty;
 
     this.board = new Board({ rows, cols });
     this.gangs = new Deck({ name: 'Gangs', cards: Gangs });
@@ -103,10 +118,18 @@ export class Game {
   }
 
   private placeGangs(players: Player[]) {
-    const randomCoordinates: string[] = this.getRandomCoordinates(players.length);
-    players.forEach(({ hired }: Player) => {
-      return this.placements.set(randomCoordinates.pop(), hired.get('henchmen'));
+    players.forEach((player: Player) => {
+      const { hired, placements } = player;
+      const coordinates = this.getRandomCoordinates(1)[0];
+      const henchmen = hired.get(Player.henchKey) || Debuggers;
+      const sector = this.sectors.get(coordinates);
+
+      if (sector) {
+        sector.controlledBy = player;
+        this.sectors.set(coordinates, sector);
+      }
+
+      return placements.set(coordinates, henchmen);
     });
   }
-
 }

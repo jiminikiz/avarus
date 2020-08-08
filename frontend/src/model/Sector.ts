@@ -1,4 +1,5 @@
 import Tools from '@/lib/Tools';
+import { Player } from './Player';
 
 export enum SectorCode {
   LO = 'LO',
@@ -32,14 +33,14 @@ export interface Site {
 
 export interface SectorShape {
   classification?: SectorClass;
-  controlled?: boolean;
+  controlledBy?: Player | undefined;
   maxSites?: number;
   sites?: Site[];
 }
 
 export class Sector implements SectorShape {
   public classification: SectorClass;
-  public controlled: boolean = false;
+  public controlledBy?: Player = undefined;
   public maxSites: number = 3;
   public sites: Site[] = [];
 

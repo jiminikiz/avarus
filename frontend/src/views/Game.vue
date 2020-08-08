@@ -1,10 +1,13 @@
 <template>
   <div class="game">
-    <GameBoard :board="game.board" />
+    <GameBoard
+      :sectors="game.sectors"
+      :placements="game.activePlayer.placements"
+    />
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { mapState, mapActions } from 'vuex';
 
 import GameBoard from '@/components/GameBoard';

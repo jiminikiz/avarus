@@ -1,25 +1,40 @@
 <template>
   <div class="game-board">
-    <section
-      class="tile"
-      v-for="({ 0: code, 1: tile }, key) in board.tiles"
+    <section class="sector tile"
+      v-for="({ 0: code, 1: sector }, key) in sectors"
+      :title="code +' '+ placement(code)"
       :key="key"
+      :style="sectorStyles(sector)"
     >
-      [{{code}}]
+    {{ code }}
     </section>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Board } from '@/lib/Board';
 import { Sector } from '@/model/Sector';
+import { Gang } from '@/model/Gang';
 
 @Component({
   name: 'game-board',
 })
 export default class GameBoard extends Vue {
-  @Prop() private board?: Board;
+  @Prop() private sectors?: Map<string, Sector>;
+  @Prop() private placements?: Map<string, Gang>;
+
+  public placement(code: string): string {
+    const gang = this.placements?.get(code);
+    return gang ? gang.name : '';
+  }
+  public sectorStyles(sector: Sector) {
+    console.debug(sector.controlledBy);
+    if (sector.controlledBy) {
+      return {
+        backgroundColor: `#${sector.controlledBy?.color}`,
+      };
+    }
+  }
 }
 </script>
 

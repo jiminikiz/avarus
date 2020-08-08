@@ -34,11 +34,14 @@ export interface PlayerOptions {
 }
 
 export class Player {
+  public static henchKey: string = 'henchmen';
+
   public name: string;
   public color: Color;
   public kingpin: Kingpin;
   public hired: Map<string, Gang> = new Map();
   public hand: Gang[] = [];
+  public placements: Map<string, Gang> = new Map();
 
   public constructor({
     name,
@@ -46,7 +49,7 @@ export class Player {
     kingpin,
   }: PlayerOptions) {
     const { henchmen } = kingpin;
-    this.hired.set('henchmen', henchmen);
+    this.hired.set(Player.henchKey, henchmen);
 
     this.name = name;
     this.color = color;

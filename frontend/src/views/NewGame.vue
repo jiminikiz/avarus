@@ -40,7 +40,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { mapActions } from 'vuex';
 
 import { Gangs, Names } from '@/data';
@@ -83,10 +83,10 @@ export default {
     ...mapActions('game', [
       'newGame',
     ]),
-    generateName(): void {
+    generateName() {
       this.player.name = Tools.random.elements(2, Names).map(({ name }) => name).join(' ');
     },
-    startGame(): void {
+    startGame() {
       const game = new Game({
         ...this.game,
         players: [new Player(this.player)],

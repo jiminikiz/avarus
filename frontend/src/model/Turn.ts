@@ -1,5 +1,4 @@
 import { GameEvent } from '@/lib/GameEvent';
-import { Command } from './Commands';
 
 export enum TurnPhase {
   Upkeep,
@@ -11,27 +10,25 @@ export enum TurnPhase {
 
 export interface TurnShape {
   count: number;
-  events: GameEvent[];
+  events?: GameEvent[];
 }
 
-export class Turn implements TurnShape {
+export class Turn {
   public count: number;
   public events: GameEvent[] = [];
 
   constructor(turn: TurnShape) {
     this.count = turn.count;
+    if (turn.events) {
+      this.events = turn.events;
+    }
   }
 
   public addGameEvent(event: GameEvent): void {
     this.events.push(event);
   }
 
-  public undoEvent(): void {
+  public undoLastEvent(): void {
     this.events.pop();
   }
-
-  // TODO: Redo
-  // public redoEvent(redoEvent: GameEvent): void {
-  //   this.events.push(redoEvent);
-  // }
 }

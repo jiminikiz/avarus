@@ -1,4 +1,9 @@
-import { Attributes, Entity } from '@/model/Attributes';
+import {
+  Attributes,
+  Entity,
+  attributes,
+} from '@/model/Attributes';
+
 import {
   EquipmentType,
   Weapon,
@@ -129,3 +134,8 @@ export class Gang {
     return equipment;
   }
 }
+
+export const Debuggers = new Gang({
+  name: 'Debuggers',
+  ...attributes,
+});
