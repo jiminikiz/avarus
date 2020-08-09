@@ -3,7 +3,7 @@ import { GameEvent, GameEventType } from '@/lib/GameEvent';
 
 import { Site, Sector } from './Sector';
 import { Gang } from './Gang';
-import { Equipable } from './Equipment';
+import { Equipable, EquipmentType } from './Equipment';
 import { ResearchableEquipment } from './ResearchableEquipment';
 
 export enum Command {
@@ -64,10 +64,10 @@ export default {
       success: 0,
     });
 
-    return {
+    return new GameEvent({
       type: GameEventType.Command,
       text: `Players gangs cause ${result.success} riots at [${sector}].`,
-    };
+    });
   },
   [Command.Control]: (
     gangs: Gang[],
@@ -80,16 +80,33 @@ export default {
 
     const numberOfDice = controllingForce;
 
-    return {
+    return new GameEvent({
       type: GameEventType.Command,
       text: 'Control message goes here',
-    };
+    });
   },
-  [Command.Equip]: () => {
-    return;
+  [Command.Equip]: (
+    equipable: Equipable,
+    gang: Gang,
+  ) => {
+    gang.equip(equipable);
+
+    return new GameEvent({
+      type: GameEventType.Gang,
+      text: `${gang.name} equips ${equipable}`,
+    });
   },
-  [Command.Give]: () => {
-    return;
+  [Command.Give]: (
+    equipmentType: EquipmentType,
+    fromGang: Gang,
+    toGang: Gang,
+  ) => {
+    fromGang.give(equipmentType, toGang);
+
+    return new GameEvent({
+      type: GameEventType.Gang,
+      text: `${fromGang.name} gives ${equipmentType} to ${toGang.name}`,
+    });
   },
   [Command.Heal]: (
     gang: Gang,
@@ -104,7 +121,7 @@ export default {
 
     gang.heal(rollResult.success);
 
-    return {
+    return new GameEvent({
       type: GameEventType.Command,
       text: `${gang.name} gains ${rollResult.success} force.`,
       data: {
@@ -112,7 +129,7 @@ export default {
         gang,
         rollResult,
       },
-    };
+    });
   },
   [Command.Hide]: () => {
     return;
@@ -139,14 +156,14 @@ export default {
       success: 0,
     });
 
-    return {
+    return new GameEvent({
       type: GameEventType.Command,
       text: `Players gangs gain ${multiRollResult.success} influence over ${site.name}`,
       data: {
         gangs,
         result: { multiRollResult },
       },
-    };
+    });
   },
   [Command.Move]: () => {
     return;
@@ -164,7 +181,7 @@ export default {
 
     researchable.advanceProgress(rollResult.success);
 
-    return {
+    return new GameEvent({
       type: GameEventType.Command,
       text: `${gang.name} made ${rollResult.success} research progress on ${researchable.name}.`,
       data: {
@@ -172,7 +189,7 @@ export default {
         gang,
         result: { rollResult },
       },
-    };
+    });
   },
   [Command.Sell]: (
     gang: Gang,
@@ -185,7 +202,7 @@ export default {
 
     const sellAmount = Math.floor(totalCost / 2);
 
-    return {
+    return new GameEvent({
       type: GameEventType.Command,
       text: `${gang.name} sold equipment for $${sellAmount} cash.`,
       data: {
@@ -193,7 +210,7 @@ export default {
         gang,
         result: { sellAmount },
       },
-    };
+    });
   },
   [Command.Snitch]: () => {
     return;
