@@ -8,7 +8,7 @@ import { Player } from './Player';
 import { Sector, Site } from './Sector';
 import { Gang, Debuggers } from './Gang';
 import { TurnPhase, Turn } from './Turn';
-import { GameEvent } from '@/lib/GameEvent';
+import { GameEvent, GameEventType, GameEventText, GameEventLogLevel, GameEventShape } from '@/lib/GameEvent';
 
 export enum GameMode {
   Greed = 'Greed',
@@ -51,6 +51,7 @@ export class Game {
 
   public sectors: Map<string, Sector> = new Map();
   public turns: Turn[] = [];
+  public phase: TurnPhase = TurnPhase.Upkeep;
   public events: GameEvent[] = [];
   public players: Player[];
 
@@ -88,15 +89,26 @@ export class Game {
     this.dealCards(players, this.gangs);
     this.generateSectors();
     this.placeGangs(players);
-
-    console.debug({
-      game: this,
-    });
   }
+
+  public addEvent(event: GameEventShape): void {
+    const gameEvent = new GameEvent(event);
+    // @ts-ignore
+    console[gameEvent.level]('GAME:EVENT', event);
+    this.events.push(gameEvent);
+  }
+
+  // TODO: End Turn
+  // public endTurn() { }
 
   private dealCards(players: Player[], deck: Deck): void {
     const dealt = deck.deal({ handSize: 3, playerCount: players.length });
     players.forEach(player => player.hand = dealt.pop() as Gang[]);
+
+    this.addEvent({
+      type: GameEventType.Deck,
+      text: GameEventText.CardsDealt,
+    });
   }
 
   private randomSites(cardinality: number = 3): Site[] {
@@ -107,10 +119,21 @@ export class Game {
     const sites = this.randomSites();
     const sector = new Sector({ ...tile, sites });
     this.sectors.set(key, sector);
+
+    this.addEvent({
+      type: GameEventType.Sector,
+      text: GameEventText.SectorCreated.replace('{sector}', key),
+      level: GameEventLogLevel.debug,
+    });
   }
 
   private generateSectors(): void {
     this.board.tiles.forEach(this.generateSector.bind(this));
+
+    this.addEvent({
+      type: GameEventType.Sector,
+      text: GameEventText.SectorsCreated,
+    });
   }
 
   private getRandomCoordinates(count: number): string[] {
@@ -130,6 +153,12 @@ export class Game {
       }
 
       return placements.set(coordinates, henchmen);
+    });
+
+    this.addEvent({
+      type: GameEventType.Gang,
+      text: GameEventText.GangsPlaced,
+      data: { players },
     });
   }
 }
