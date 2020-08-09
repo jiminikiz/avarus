@@ -28,7 +28,6 @@ export default class GameBoard extends Vue {
     return gang ? gang.name : '';
   }
   public sectorStyles(sector: Sector) {
-    console.debug(sector.controlledBy);
     if (sector.controlledBy) {
       return {
         backgroundColor: `#${sector.controlledBy?.color}`,
@@ -42,14 +41,14 @@ export default class GameBoard extends Vue {
   .game-board {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
-    height: 640px;
-    width: 640px;
-    border: 1px solid color-primary;
+    height: 720px;
+    width: 720px;
+    border: 2px solid color-primary;
     .tile {
-      border: 1px solid color-primary;
+      border: 2px solid color-primary;
       &:hover {
         background-color: color-glass;
-        border-color: color-secondary;
+        outline: 2px solid color-secondary;
       }
     }
   }
